@@ -39,16 +39,15 @@ const mongooseOptions: any = {
 
 
 mongoose.connect(MONGODB_URI_LOCAL, mongooseOptions,
-  () => {
-    console.log('  MongoDB connected successfully!\n')
-    console.log("Press CTRL-C to stop\n-----------------------------------------------------------------\n\n");
-    /* ready to use. The `mongoose.connect()` promise resolves to undefined. */
-  },
-)
-//   .catch(err => {
-//   console.log(`MongoDB connection error. Please make sure MongoDB is running. ${err}`);
-//   // process.exit();
-// });
+  
+).then((value) => {
+  console.log('Connected Version: ', value.version)
+  console.log('MongoDB connected successfully!\n')
+  console.info("Press CTRL-C to stop\n-----------------------------------------------------------------\n\n");
+},).catch(err => {
+  console.log(`MongoDB connection error. Please make sure MongoDB is running. Error: ${err}`);
+  // process.exit();
+});
 
 // Express configuration
 app.set("port", process.env.PORT || 3000);

@@ -11,7 +11,7 @@ export const checkIsAuthenticated = (req: Request, res: Response, next: any) => 
 };
 
 export const passportLoginCallback = (req: Request, res: Response, next: any) => {
-  passport.authenticate("local", function (err, user: IUser, info) {
+  passport.authenticate("local", function (err: any, user: IUser, info: any) {
 
     if (err) {
       console.log("err: ", err);
